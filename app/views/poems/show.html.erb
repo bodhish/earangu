@@ -1,0 +1,6 @@
+<h1>  <%= @poem.title %></h1>
+<h1>  <%= @poem.description %></h1>
+<h1>  <%= @poem.poet.name %></h1>
+<h1>  <%= @poem.poet.title %></h1>
+<h1>  <%= @poem.poet.bio %></h1>
+<a class="no-underline btn btn-primary btn-large" href=<%= category_path(@poem.category) %>>View Category</a>

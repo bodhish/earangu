@@ -1,0 +1,10 @@
+<h1>  <%= @category.name %></h1>
+<h1>  <%= @category.description %></h1>
+
+
+<div>
+  <% @category.poems.map do |poem| %>
+    <div>  <%= poem.title %></div>
+    <a class="no-underline btn btn-primary btn-large" href=<%= poem_path(poem) %>>View Poem</a>
+  <% end %>
+</div>
