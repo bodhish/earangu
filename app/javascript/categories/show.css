@@ -3,7 +3,7 @@
 }
 
 .earangu-show__poem-card-title-bar {
-  background-color: #1A202C;
+  background-color: theme(colors.gray.900);
   @apply rounded-b-lg;
 }
 
