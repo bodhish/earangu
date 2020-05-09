@@ -16,3 +16,11 @@
 .earangu-poems-show__poem-content {
   background-color: theme(colors.gray.900);
 }
+
+.earangu-poems-show__social-share-link:first-child {
+  @apply rounded-l-lg;
+}
+
+.earangu-poems-show__social-share-link:last-child {
+  @apply rounded-r-lg;
+}
