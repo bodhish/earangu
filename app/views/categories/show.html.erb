@@ -22,8 +22,8 @@
     <div class="max-w-5xl mx-auto px-3 md:px-4">
       <nav class="-mb-px flex">
         <% Category.all.map do |c| %>
-          <% class_name = current_page?(category_path(c)) ? 'py-4 px-1 border-b-3 border-indigo-500 font-medium text-sm leading-5 text-indigo-600  focus:outline-none focus:text-indigo-800 focus:border-indigo-700' : 'ml-8 py-4 px-1 border-b-3 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300' %>
-          <%= link_to c.name, category_path(c), class: "flex-1 whitespace-no-wrap text-center #{class_name}" %>
+          <% class_name = current_page?(category_path(c)) ? 'py-4 px-4 border-b-3 border-indigo-500 font-medium text-sm leading-5 text-indigo-600 focus:outline-none focus:text-indigo-800 focus:border-indigo-700' : 'py-4 px-4 border-b-3 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-400 hover:border-gray-800 focus:outline-none focus:text-gray-700 focus:border-indigo-500' %>
+          <%= link_to c.name, category_path(c), class: "whitespace-no-wrap text-center #{class_name}" %>
         <% end %>
       </nav>
     </div>
@@ -34,12 +34,12 @@
     <% @category.poems.map do |poem| %>
       <a href=<%= poem_path(poem) %> class="w-full md:w-1/2 px-3 md:px-4">
       <span class="mt-8 block">
-        <div>
+        <div class="relative earangu-show__poem-card-thumbnail-container">
           <% if poem.cover_image.present? %>
-            <img src=<%= url_for(poem.cover_image) %> alt="" class="w-full earangu-show__poem-card-thumbnail"/>
+            <img src=<%= url_for(poem.cover_image) %> alt="" class="earangu-show__poem-card-thumbnail absolute h-full w-full object-cover"/>
           <% else %>
-              <img class="w-full earangu-show__poem-card-thumbnail" src="https://earangu-static.s3.ap-south-1.amazonaws.com/earangu-default-dp.png" alt="Earangu">
-          <% end %>>
+              <img class="earangu-show__poem-card-thumbnail absolute h-full w-full object-cover" src="https://earangu-static.s3.ap-south-1.amazonaws.com/earangu-default-dp.png" alt="Earangu">
+          <% end %>
         </div>
           <span class="earangu-show__poem-card-title-bar block shadow-lg rounded-b-lg px-3 md:px-6 pt-3 md:pt-4 pb-5 md:pb-6 mx-3 md:mx-4">
             <h2 class="font-bold text-lg md:text-2xl text-white leading-snug"><%= poem.title %></h2>

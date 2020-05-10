@@ -2,16 +2,16 @@
 <%= javascript_pack_tag 'poems/show', nonce: true %>
 
 <div class="flex flex-col md:flex-row 2xl:max-w-screen-3xl md:h-screen">
-  <div class="w-full md:w-3/5 2xl:w-8/12 border-r border-gray-800 overflow-y-auto">
-    <nav class="px-3 pt-4 lg:px-10 lg:pt-8 sm:hidden">
-      <a href="#" class="flex items-center text-sm leading-5 font-medium text-gray-500 hover:text-gray-700 transition duration-150 ease-in-out">
-        <svg class="flex-shrink-0 -ml-1 mr-1 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+  <div class="hidden md:block w-full md:w-3/5 2xl:w-8/12 border-r border-gray-800 overflow-y-auto">
+    <nav class="px-3 py-3 lg:px-10 lg:pt-8 sm:hidden">
+      <%= link_to @poem.category, class:"flex items-center text-sm leading-5 font-medium text-gray-500 hover:text-gray-700 transition duration-150 ease-in-out" do %>
+        <svg class="flex-shrink-0 -ml-1 mr-1 h-5 w-5 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/>
         </svg>
         തിരികെ പോവുക
-      </a>
+      <% end %>
     </nav>
-    <nav class="px-3 pt-4 lg:px-10 lg:pt-8 hidden sm:flex items-center text-sm leading-4 font-medium">
+    <nav class="px-3 pt-4 lg:px-10 lg:pt-8 lg:pb-4 hidden sm:flex items-center text-sm leading-4 font-medium">
       <a href="/" class="text-gray-600 hover:text-gray-200 transition duration-150 ease-in-out">e-അരങ്ങ്</a>
       <svg class="flex-shrink-0 mx-2 h-5 w-5 text-gray-700" fill="currentColor" viewBox="0 0 20 20">
         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
@@ -22,17 +22,18 @@
       </svg>
       <p class="text-gray-400"><%= @poem.title %></p>
     </nav>
-    <div class="earangu-poems-show__video-container px-0 pt-4 md:px-4 lg:px-10 lg:rounded-lg overflow-hidden shadow-lg">
-      <div class="earangu-poems-show__video-wrapper">
+    <div class="earangu-poems-show__video-container px-0 md:px-4 lg:px-10">
+      <div class="earangu-poems-show__video-wrapper lg:rounded-lg overflow-hidden">
         <iframe width="560" height="315" src="<%= @poem.youtube_link %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
-    <div class="px-3 pt-1 pb-4 lg:px-10">
-      <h1 class="text-white text-xl lg:text-3xl"><%= @poem.title %></h1>
-      <p class="text-gray-400 text-sm lg:text-base"><%= @poem.poet.name %></p>
+    <div class="px-3 pt-1 pb-2 lg:pb-4 lg:px-10">
+      <h1 class="text-white text-base lg:text-3xl"><%= @poem.title %></h1>
+      <p class="text-gray-400 text-xs lg:text-base"><%= @poem.poet.name %></p>
       <div class="hidden md:flex pt-8 -mx-3">
-        <div class="w-1/2 px-3">
+
           <% if @poem.prev %>
+          <div class="flex-1 px-3">
             <%= link_to poem_path(@poem.prev), class: 'flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150' do %>
               <div>
                 <svg class="text-gray-600 h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -44,10 +45,12 @@
                 <span class="hidden lg:block text-right text-base font-bold text-gray-300 truncate w-40 xl:w-56"><%= @poem.prev.title %></span>
               </div>
             <% end %>
+            </div>
           <% end %>
-        </div>
-        <div class="w-1/2 px-3">
+
+
           <% if @poem.next %>
+          <div class="flex-1 px-3">
             <%= link_to poem_path(@poem.next), class: 'flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150' do %>
               <div>
                 <span class="block text-left text-sm text-gray-500">അടുത്തത്</span>
@@ -59,71 +62,89 @@
                 </svg>
               </div>
             <% end %>
+            </div>
           <% end %>
-        </div>
+
       </div>
     </div>
   </div>
-  <div class="w-full md:w-2/5 2xl:w-4/12 earangu-poems-show__poem-content text-base text-white px-3 py-4 pt-4 lg:pt-8 lg:px-10 overflow-y-auto">
-    <span class="inline-flex items-center px-2 py-px rounded text-xs font-semibold tracking-wider leading-5 bg-green-200 text-green-900 border-green-500">
-    <%= simple_format(@poem.category.name) %>
-    </span>
-    <h2 class="text-white text-2xl"><%= @poem.title %></h2>
-    <%= simple_format(@poem.description) %>
-    <div class="earangu-poems-show__poet-profile border-t border-gray-800 mt-6 pt-6">
-      <div class="flex-shrink-0 block">
-        <div class="flex items-center">
-          <div>
-            <% if @poem.poet.avatar.present? %>
-              <img src=<%= url_for(@poem.poet.avatar) %> alt="" class="inline-block h-12 w-12 border border-gray-700 shadow-lg rounded-full object-cover"/>
-            <% else %>
-              <img class="inline-block h-12 w-12 border border-gray-700 shadow-lg rounded-full object-cover" src="https://earangu-static.s3.ap-south-1.amazonaws.com/earangu-default-dp.png" alt=""/>
-            <% end %>
-          </div>
-          <div class="ml-3">
-            <p class="text-lg leading-6 font-semibold text-gray-400">
-              <%= @poem.poet.name %>
-            </p>
-            <p class="text-xs leading-5 font-medium text-gray-500">
-              <%= @poem.poet.title %>
-            </p>
-          </div>
+  <div class="w-full md:w-2/5 2xl:w-4/12 earangu-poems-show__poem-content text-base text-white relative md:overflow-y-auto">
+    <nav class="px-3 py-3 lg:px-10 lg:pt-8 sm:hidden bg-darker">
+      <%= link_to @poem.category, class:"flex items-center text-sm leading-5 font-medium text-gray-500 hover:text-gray-700 transition duration-150 ease-in-out" do %>
+        <svg class="flex-shrink-0 -ml-1 mr-1 h-5 w-5 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/>
+        </svg>
+        തിരികെ പോവുക
+      <% end %>
+    </nav>
+    <div class="sticky top-0 bg-darker">
+      <div class="block md:hidden earangu-poems-show__video-container px-0 md:px-4 lg:px-10">
+        <div class="earangu-poems-show__video-wrapper lg:rounded-lg overflow-hidden">
+          <iframe width="560" height="315" src="<%= @poem.youtube_link %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
-      <div class="earangu-poems-show__poet-bio pt-4">
-        <p>
-          <%= simple_format(@poem.poet.bio) %>
-        </p>
-      </div>
-      <div class="flex md:hidden pt-8 -mx-3">
-        <div class="w-1/2 px-3">
-          <% if @poem.prev %>
-            <%= link_to poem_path(@poem.prev), class: 'flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150' do %>
-              <div>
-                <svg class="text-gray-600 h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10 19L3 12M3 12L10 5M3 12L21 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div>
-                <span class="block text-right text-sm text-gray-500">മുമ്പത്തേത്</span>
+    </div>
+    <div class="px-3 py-4 lg:pt-8 lg:px-10">
+      <span class="inline-flex items-center px-2 py-px rounded text-xs font-semibold tracking-wider leading-5 bg-green-200 text-green-900 border-green-500">
+      <%= simple_format(@poem.category.name) %>
+      </span>
+      <h2 class="text-white text-2xl"><%= @poem.title %></h2>
+      <%= simple_format(@poem.description) %>
+      <div class="earangu-poems-show__poet-profile border-t border-gray-800 mt-6 pt-6">
+        <div class="flex-shrink-0 block">
+          <div class="flex items-center">
+            <div>
+              <% if @poem.poet.avatar.present? %>
+                <img src=<%= url_for(@poem.poet.avatar) %> alt="" class="inline-block h-12 w-12 border border-gray-700 shadow-lg rounded-full object-cover"/>
+              <% else %>
+                <img class="inline-block h-12 w-12 border border-gray-700 shadow-lg rounded-full object-cover" src="https://earangu-static.s3.ap-south-1.amazonaws.com/earangu-default-dp.png" alt=""/>
+              <% end %>
+            </div>
+            <div class="ml-3">
+              <p class="text-lg leading-6 font-semibold text-gray-400">
+                <%= @poem.poet.name %>
+              </p>
+              <p class="text-xs leading-5 font-medium text-gray-500">
+                <%= @poem.poet.title %>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="earangu-poems-show__poet-bio pt-4">
+          <p>
+            <%= simple_format(@poem.poet.bio) %>
+          </p>
+        </div>
+        <div class="flex md:hidden pt-8 -mx-3">
+        <% if @poem.prev %>
+          <div class="flex-1 px-3">
+              <%= link_to poem_path(@poem.prev), class: 'flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150' do %>
+                <div>
+                  <svg class="text-gray-600 h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 19L3 12M3 12L10 5M3 12L21 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <span class="block text-right text-sm text-gray-500 ml-2">മുമ്പത്തേത്</span>
+                </div>
+              <% end %>
               </div>
             <% end %>
-          <% end %>
-        </div>
-        <div class="w-1/2 px-3">
-          <% if @poem.next %>
-            <%= link_to poem_path(@poem.next), class: 'flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150' do %>
-              <div>
-                <span class="block text-left text-sm text-gray-500">അടുത്തത്</span>
-              </div>
 
-              <div>
-                <svg class="text-gray-600 h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M14 5L21 12M21 12L14 19M21 12L3 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+            <% if @poem.next %>
+            <div class="flex-1 px-3">
+              <%= link_to poem_path(@poem.next), class: 'flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150' do %>
+                <div>
+                  <span class="block text-left text-sm text-gray-500 mr-2">അടുത്തത്</span>
+                </div>
+                <div>
+                  <svg class="text-gray-600 h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 5L21 12M21 12L14 19M21 12L3 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              <% end %>
               </div>
             <% end %>
-          <% end %>
         </div>
       </div>
     </div>
