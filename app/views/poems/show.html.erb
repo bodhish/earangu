@@ -1,14 +1,6 @@
 <%= stylesheet_pack_tag 'poems/show', media: 'all' %>
 <%= javascript_pack_tag 'poems/show', nonce: true %>
 
-
-<%# <h1>  <%= @poem.title %></h1>
-<%# <h1>  <%= @poem.description %></h1>
-<%# <h1>  </h1>
-<%# <h1>  <%= @poem.poet.title %></h1>
-<%# <h1>  <%= @poem.poet.bio %></h1>
-<%# <a class="no-underline btn btn-primary btn-large" href=<%= category_path(@poem.category) %><%# View Category</a>%>
-
 <div class="flex flex-col md:flex-row 2xl:max-w-screen-3xl md:h-screen">
   <div class="w-full md:w-3/5 2xl:w-8/12 border-r border-gray-800 overflow-y-auto">
     <nav class="px-3 pt-4 lg:px-10 lg:pt-8 sm:hidden">
@@ -24,7 +16,7 @@
       <svg class="flex-shrink-0 mx-2 h-5 w-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
       </svg>
-      <a href="#" class="text-gray-400 hover:text-gray-200 transition duration-150 ease-in-out">കവിത ഇന്ന്</a>
+      <a href="#" class="text-gray-400 hover:text-gray-200 transition duration-150 ease-in-out"><%= @poem.category.name %></a>
       <svg class="flex-shrink-0 mx-2 h-5 w-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
       </svg>
@@ -78,8 +70,11 @@
       <div class="flex-shrink-0 block">
         <div class="flex items-center">
           <div>
-            <%#= image_tag(@poem.poet.avatar) class: %>
-            <img src=<%= url_for(@poem.poet.avatar) %> alt="" class="inline-block h-12 w-12 border border-gray-700 shadow-lg rounded-full object-cover"/>
+            <% if @poem.poet.avatar.present? %>
+              <img src=<%= url_for(@poem.poet.avatar) %> alt="" class="inline-block h-12 w-12 border border-gray-700 shadow-lg rounded-full object-cover"/>
+            <% else %>
+              <img class="inline-block h-12 w-12 border border-gray-700 shadow-lg rounded-full object-cover" src="https://earangu-static.s3.ap-south-1.amazonaws.com/earangu-default-dp.png" alt=""/>
+            <% end %>
           </div>
           <div class="ml-3">
             <p class="text-lg leading-6 font-semibold text-gray-400">

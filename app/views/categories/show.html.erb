@@ -34,7 +34,13 @@
     <% @category.poems.map do |poem| %>
       <a href=<%= poem_path(poem) %> class="w-full md:w-1/2 px-3 md:px-4">
       <span class="mt-8 block">
-          <img class="w-full earangu-show__poem-card-thumbnail" src="https://images.unsplash.com/photo-1549213821-4708d624e1d1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80" alt="Sunset in the mountains">
+        <div>
+          <% if poem.cover_image.present? %>
+            <img src=<%= url_for(poem.cover_image) %> alt="" class="w-full earangu-show__poem-card-thumbnail"/>
+          <% else %>
+              <img class="w-full earangu-show__poem-card-thumbnail" src="https://earangu-static.s3.ap-south-1.amazonaws.com/earangu-default-dp.png" alt="Earangu">
+          <% end %>>
+        </div>
           <span class="earangu-show__poem-card-title-bar block shadow-lg rounded-b-lg px-3 md:px-6 pt-3 md:pt-4 pb-5 md:pb-6 mx-3 md:mx-4">
             <h2 class="font-bold text-lg md:text-2xl text-white leading-snug"><%= poem.title %></h2>
             <p class="text-white text-sm md:text-base leading-snug mt-1">
