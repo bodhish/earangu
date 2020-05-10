@@ -98,7 +98,7 @@
       <div class="flex md:hidden pt-8 -mx-3">
         <div class="w-1/2 px-3">
           <% if @poem.prev %>
-            <a class="flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150" href="#">
+            <%= link_to poem_path(@poem.prev), class: 'flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150' do %>
               <div>
                 <svg class="text-gray-600 h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M10 19L3 12M3 12L10 5M3 12L21 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -107,12 +107,12 @@
               <div>
                 <span class="block text-right text-sm text-gray-500">മുമ്പത്തേത്</span>
               </div>
-            </a>
+            <% end %>
           <% end %>
         </div>
         <div class="w-1/2 px-3">
           <% if @poem.next %>
-            <a class="flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150" href="#">
+            <%= link_to poem_path(@poem.next), class: 'flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150' do %>
               <div>
                 <span class="block text-left text-sm text-gray-500">അടുത്തത്</span>
               </div>
@@ -122,7 +122,7 @@
                   <path d="M14 5L21 12M21 12L14 19M21 12L3 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-            </a>
+            <% end %>
           <% end %>
         </div>
       </div>
