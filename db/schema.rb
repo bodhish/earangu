@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_24_141011) do
+ActiveRecord::Schema.define(version: 2020_05_10_060138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,11 +50,12 @@ ActiveRecord::Schema.define(version: 2020_02_24_141011) do
 
   create_table "poems", force: :cascade do |t|
     t.string "title", null: false
-    t.string "description", null: false
+    t.text "description", null: false
     t.bigint "poet_id"
     t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "youtube_link"
     t.index ["category_id"], name: "index_poems_on_category_id"
     t.index ["poet_id"], name: "index_poems_on_poet_id"
   end
@@ -62,7 +63,7 @@ ActiveRecord::Schema.define(version: 2020_02_24_141011) do
   create_table "poets", force: :cascade do |t|
     t.string "name", null: false
     t.string "title", null: false
-    t.string "bio", null: false
+    t.text "bio", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

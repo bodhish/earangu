@@ -266,6 +266,9 @@ ActiveAdmin.setup do |config|
   #
   #   end
 
+  config.register_stylesheet 'https://cdn.bootcss.com/trix/1.0.0/trix.css'
+  config.register_javascript 'https://cdn.bootcss.com/trix/1.0.0/trix.js'
+
   # == Pagination
   #
   # Pagination is enabled by default for all resources.

@@ -1,5 +1,5 @@
 ActiveAdmin.register Poem do
-  permit_params :title, :description, :poet_id, :category_id
+  permit_params :title, :description, :poet_id, :category_id, :youtube_link
 
   index do
     selectable_column
@@ -17,7 +17,8 @@ ActiveAdmin.register Poem do
   form do |f|
     f.inputs do
       f.input :title
-      f.input :description
+      f.input :youtube_link
+      f.rich_text_area :description
       f.input :poet, as: :select
       f.input :category, as: :select
     end

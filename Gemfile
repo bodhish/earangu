@@ -33,6 +33,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'activeadmin', '~> 2.6.0' # The administration framework for Ruby on Rails applications. https://activeadmin.info
 
+gem 'active_admin_trix', '~> 0.0.3'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

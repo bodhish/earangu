@@ -17,7 +17,7 @@ ActiveAdmin.register Poet do
     f.inputs do
       f.input :name
       f.input :title
-      f.input :bio
+      f.rich_text_area :bio
     end
     f.actions
   end

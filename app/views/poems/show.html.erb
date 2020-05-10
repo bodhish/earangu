@@ -4,7 +4,7 @@
 
 <%# <h1>  <%= @poem.title %></h1>
 <%# <h1>  <%= @poem.description %></h1>
-<%# <h1>  <%= @poem.poet.name %></h1>
+<%# <h1>  </h1>
 <%# <h1>  <%= @poem.poet.title %></h1>
 <%# <h1>  <%= @poem.poet.bio %></h1>
 <%# <a class="no-underline btn btn-primary btn-large" href=<%= category_path(@poem.category) %><%# View Category</a>%>
@@ -32,7 +32,7 @@
     </nav>
     <div class="earangu-poems-show__video-container px-0 pt-4 md:px-4 lg:px-10 lg:rounded-lg overflow-hidden shadow-lg">
       <div class="earangu-poems-show__video-wrapper">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/-t6ZrKEYuQQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="<%=@poem.youtube_link %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
     <div class="px-3 pt-1 pb-4 lg:px-10">
@@ -73,46 +73,7 @@
       കവിത
     </span>
     <h2 class="text-white text-2xl">ഒറ്റപ്പെട്ട ജലതന്മാത്ര</h1>
-    <p> കുസല ചാപ്പചിങ്കു കിന്നെ കോപാലുഗോ ജിങ്കാസ്തു
-        തഗൃഷ്യ ചിറ്ററാകാനി തിങ്ങര ചിറ്ററാകാനി
-        ഉളഗ് അലോയ്. ഗോവൽ സിരിവകിര ലരിത് കഥിനെതി
-        അന്നരെ ആബിശാക്കി പരിഞ്ഞു
-
-        സിനോതു കീബുഷ്‌ക. ബ്ലിഗോദുസ്ഥിതൻ
-        പൂഞ്ചി പൂപ്പകുമഗ്രി പ്രിത്തോണെ ദസേ സുമാരി ന്നിക്കു
-        ജോലിമമ്പാ ചെർണോസോപ്പ തെസ്ത് കുലോം
-        ടൂർക്കൊണ്ടി കയറാക ഷൂഖ്രതൻ മിപ്രസാര.
-
-        തിങ്ങര വയപാലിമന പുഷ്യത്തെ കുണുങ്ങ
-        ലുഡ്‌കെ ചുക്കാര്ഥ്യം വിസ്സപ്പണ്ടു കുദിമ
-        കിംബജിനരിയാരവം. വിരാദ കണ്ടാല്പി
-        ഡാംണ്ട്സ്‌കി മാമണ്ടി സുംബാ ഇടിവെ
-
-        മദസ്തു സുമസി ചിമ്മത്തോ മാർക്കത്തി
-        കൊച്ചാലിണ്ടര ലക്കിടി എന്നൊച്ചി വടത ലുവികം.
-        സിലമാതു പ്രിലോക മനോ ലുവികം കണ്ടാല്പി
-        ഗോവൽ ബോജിത ഫാവു കിന്നെ വിരാദ അധോഗലം.
-    </p>
-    <p> കുസല ചാപ്പചിങ്കു കിന്നെ കോപാലുഗോ ജിങ്കാസ്തു
-        തഗൃഷ്യ ചിറ്ററാകാനി തിങ്ങര ചിറ്ററാകാനി
-        ഉളഗ് അലോയ്. ഗോവൽ സിരിവകിര ലരിത് കഥിനെതി
-        അന്നരെ ആബിശാക്കി പരിഞ്ഞു
-
-        സിനോതു കീബുഷ്‌ക. ബ്ലിഗോദുസ്ഥിതൻ
-        പൂഞ്ചി പൂപ്പകുമഗ്രി പ്രിത്തോണെ ദസേ സുമാരി ന്നിക്കു
-        ജോലിമമ്പാ ചെർണോസോപ്പ തെസ്ത് കുലോം
-        ടൂർക്കൊണ്ടി കയറാക ഷൂഖ്രതൻ മിപ്രസാര.
-
-        തിങ്ങര വയപാലിമന പുഷ്യത്തെ കുണുങ്ങ
-        ലുഡ്‌കെ ചുക്കാര്ഥ്യം വിസ്സപ്പണ്ടു കുദിമ
-        കിംബജിനരിയാരവം. വിരാദ കണ്ടാല്പി
-        ഡാംണ്ട്സ്‌കി മാമണ്ടി സുംബാ ഇടിവെ
-
-        മദസ്തു സുമസി ചിമ്മത്തോ മാർക്കത്തി
-        കൊച്ചാലിണ്ടര ലക്കിടി എന്നൊച്ചി വടത ലുവികം.
-        സിലമാതു പ്രിലോക മനോ ലുവികം കണ്ടാല്പി
-        ഗോവൽ ബോജിത ഫാവു കിന്നെ വിരാദ അധോഗലം.
-      </p>
+    <%= simple_format(@poem.description) %>
     <div class="earangu-poems-show__poet-profile border-t border-gray-800 mt-6 pt-6">
       <div  class="flex-shrink-0 block">
         <div class="flex items-center">
@@ -121,20 +82,17 @@
           </div>
           <div class="ml-3">
             <p class="text-lg leading-6 font-semibold text-gray-400">
-              ശ്രീനന്ദിനി
+            <%= @poem.poet.name %>
             </p>
             <p class="text-xs leading-5 font-medium text-gray-500">
-              കീബുഷ്‌ക, ബ്ലിഗോദുസ്ഥിതൻ
+            <%= @poem.poet.title %>
             </p>
           </div>
         </div>
       </div>
       <div class="earangu-poems-show__poet-bio pt-4">
         <p>
-          കീച്ചു സിലമാതു അന്ദ്ര ഓത്തി വിക്ലങ്കൻ പുസത്തിനോക്കാൻ വയപാലിമന യായപ്രതി യാടാപ്പങ്കും പോടുത്താന് ടംസറ്. ഖംനോവ് ശലപായ്ക കൽട നച്ചതോ പൊറകേച്ചി പുസത്തിനോക്കാൻ കിനാട്‌ ളാഹജ കടക്തി കൊച്ചാലിണ്ടര പലവാണി ഹെയ്‌യാം സൂനര്യടി ചേമ്പക്കത്ത വിണ്ടി.
-        </p>
-        <p>
-          കലത്രിപാൻ പിക്കെ കൽട പുൽത്തരി വർത്തിതം വൻസ്മാല്യം ആക്‌സിച്ചില ഹയമ്മതി കിനായൈസ്ഥ ദിഗോല്പ്പി കശ്‌മീശ സാദൂഹരിണ ജിംഗ്രത കജം യേദു. ല ചുപരണ പുസത്തിനോക്കാൻ റണ്ടിനി പർത്തിവ ചും ദംബടോസ്കി കോസി പിക്കെ ദംബടോസ്കി കോന്തുരാ. എപകടെ ജുൻസാവ കീഴ്നട്ട തുംനേ മക്രിതല്പന ഡോരാര്‍ തെരുമാനവ മക്രിതല്പന പുൽത്തരി ലരിത് ദുഷ്മേളിത ലോപാമു നാമാവിശികു ഡാംണ്ട്സ്‌കി ശലപായ്ക.
+        <%= @poem.poet.bio %>
         </p>
       </div>
       <div class="flex md:hidden pt-8 -mx-3">
