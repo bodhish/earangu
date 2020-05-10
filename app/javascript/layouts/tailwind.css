@@ -15,7 +15,7 @@ html {
 }
 
 body {
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Manjari', sans-serif;
     color: #12161F;
     @apply w-full h-full antialiased;
 }
