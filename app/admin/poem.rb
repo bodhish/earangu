@@ -18,7 +18,7 @@ ActiveAdmin.register Poem do
     f.inputs do
       f.input :title
       f.input :youtube_link
-      f.rich_text_area :description
+      f.input :description, as: :trix
       f.input :poet, as: :select
       f.input :category, as: :select
     end
