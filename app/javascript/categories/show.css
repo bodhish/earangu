@@ -1,0 +1,18 @@
+.earangu-show__poem-card-thumbnail {
+  @apply rounded-lg;
+}
+
+.earangu-show__poem-card-title-bar {
+  background-color: theme(colors.gray.900);
+  @apply rounded-b-lg;
+}
+
+@screen md {
+  .earangu-show__poem-card-thumbnail {
+    border-radius: 1.25rem;
+  }
+  .earangu-show__poem-card-title-bar {
+    border-bottom-left-radius: 1.25rem;
+    border-bottom-right-radius: 1.25rem;
+  }
+}

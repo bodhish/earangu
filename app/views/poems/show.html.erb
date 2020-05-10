@@ -1,6 +1,168 @@
-<h1>  <%= @poem.title %></h1>
-<h1>  <%= @poem.description %></h1>
-<h1>  <%= @poem.poet.name %></h1>
-<h1>  <%= @poem.poet.title %></h1>
-<h1>  <%= @poem.poet.bio %></h1>
-<a class="no-underline btn btn-primary btn-large" href=<%= category_path(@poem.category) %>>View Category</a>
+<%= stylesheet_pack_tag 'poems/show', media: 'all'%>
+<%= javascript_pack_tag 'poems/show', nonce: true %>
+
+
+<%# <h1>  <%= @poem.title %></h1>
+<%# <h1>  <%= @poem.description %></h1>
+<%# <h1>  <%= @poem.poet.name %></h1>
+<%# <h1>  <%= @poem.poet.title %></h1>
+<%# <h1>  <%= @poem.poet.bio %></h1>
+<%# <a class="no-underline btn btn-primary btn-large" href=<%= category_path(@poem.category) %><%# View Category</a>%>
+
+<div class="flex flex-col md:flex-row 2xl:max-w-screen-3xl md:h-screen">
+  <div class="w-full md:w-3/5 2xl:w-8/12 border-r border-gray-800 overflow-y-auto">
+    <nav class="px-3 pt-4 lg:px-10 lg:pt-8 sm:hidden">
+      <a href="#" class="flex items-center text-sm leading-5 font-medium text-gray-500 hover:text-gray-700 transition duration-150 ease-in-out">
+        <svg class="flex-shrink-0 -ml-1 mr-1 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/>
+        </svg>
+        തിരികെ പോവുക
+      </a>
+    </nav>
+    <nav class="px-3 pt-4 lg:px-10 lg:pt-8 hidden sm:flex items-center text-sm leading-4 font-medium">
+      <a href="#" class="text-gray-400 hover:text-gray-200 transition duration-150 ease-in-out">e-അരങ്ങ്</a>
+      <svg class="flex-shrink-0 mx-2 h-5 w-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+      </svg>
+      <a href="#" class="text-gray-400 hover:text-gray-200 transition duration-150 ease-in-out">കവിത ഇന്ന്</a>
+      <svg class="flex-shrink-0 mx-2 h-5 w-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+      </svg>
+      <a href="#" class="text-gray-400 hover:text-gray-200 transition duration-150 ease-in-out">ഒറ്റപ്പെട്ട ജലതന്മാത്ര</a>
+    </nav>
+    <div class="earangu-poems-show__video-container px-0 pt-4 md:px-4 lg:px-10 lg:rounded-lg overflow-hidden shadow-lg">
+      <div class="earangu-poems-show__video-wrapper">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/-t6ZrKEYuQQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="px-3 pt-1 pb-4 lg:px-10">
+      <h1 class="text-white text-xl lg:text-3xl">ഒറ്റപ്പെട്ട ജലതന്മാത്ര</h1>
+      <p class="text-gray-400 text-sm lg:text-base">ശ്രീനന്ദിനി</p>
+      <div class="hidden md:flex pt-8 -mx-3">
+        <div class="w-1/2 px-3">
+          <a class="flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150" href="#">
+            <div>
+              <svg class="text-gray-600 h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 19L3 12M3 12L10 5M3 12L21 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <span class="block text-right text-sm text-gray-500">മുമ്പത്തേത്</span>
+              <span class="hidden lg:block text-right text-base font-bold text-gray-300 truncate w-40 xl:w-56">ആഡോയിഴിഞ്ഞു പഴിത്തേടി ആഡോയിഴിഞ്ഞു പഴിത്തേടി ആഡോയിഴിഞ്ഞു പഴിത്തേടി</span>
+            </div>
+          </a>
+        </div>
+        <div class="w-1/2 px-3">
+          <a class="flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150" href="#">
+            <div>
+              <span class="block text-left text-sm text-gray-500">അടുത്തത്</span>
+              <span class="hidden lg:block text-left text-base font-bold text-gray-300 truncate w-40 xl:w-56">കയറാക ഷൂഖ്രതൻ</span>
+            </div>
+            <div>
+              <svg class="text-gray-600 h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 5L21 12M21 12L14 19M21 12L3 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="w-full md:w-2/5 2xl:w-4/12 earangu-poems-show__poem-content text-base text-white px-3 py-4 pt-4 lg:pt-8 lg:px-10 overflow-y-auto">
+    <span class="inline-flex items-center px-2 py-px rounded text-xs font-semibold tracking-wider leading-5 bg-green-200 text-green-900 border-green-500">
+      കവിത
+    </span>
+    <h2 class="text-white text-2xl">ഒറ്റപ്പെട്ട ജലതന്മാത്ര</h1>
+    <p> കുസല ചാപ്പചിങ്കു കിന്നെ കോപാലുഗോ ജിങ്കാസ്തു
+        തഗൃഷ്യ ചിറ്ററാകാനി തിങ്ങര ചിറ്ററാകാനി
+        ഉളഗ് അലോയ്. ഗോവൽ സിരിവകിര ലരിത് കഥിനെതി
+        അന്നരെ ആബിശാക്കി പരിഞ്ഞു
+
+        സിനോതു കീബുഷ്‌ക. ബ്ലിഗോദുസ്ഥിതൻ
+        പൂഞ്ചി പൂപ്പകുമഗ്രി പ്രിത്തോണെ ദസേ സുമാരി ന്നിക്കു
+        ജോലിമമ്പാ ചെർണോസോപ്പ തെസ്ത് കുലോം
+        ടൂർക്കൊണ്ടി കയറാക ഷൂഖ്രതൻ മിപ്രസാര.
+
+        തിങ്ങര വയപാലിമന പുഷ്യത്തെ കുണുങ്ങ
+        ലുഡ്‌കെ ചുക്കാര്ഥ്യം വിസ്സപ്പണ്ടു കുദിമ
+        കിംബജിനരിയാരവം. വിരാദ കണ്ടാല്പി
+        ഡാംണ്ട്സ്‌കി മാമണ്ടി സുംബാ ഇടിവെ
+
+        മദസ്തു സുമസി ചിമ്മത്തോ മാർക്കത്തി
+        കൊച്ചാലിണ്ടര ലക്കിടി എന്നൊച്ചി വടത ലുവികം.
+        സിലമാതു പ്രിലോക മനോ ലുവികം കണ്ടാല്പി
+        ഗോവൽ ബോജിത ഫാവു കിന്നെ വിരാദ അധോഗലം.
+    </p>
+    <p> കുസല ചാപ്പചിങ്കു കിന്നെ കോപാലുഗോ ജിങ്കാസ്തു
+        തഗൃഷ്യ ചിറ്ററാകാനി തിങ്ങര ചിറ്ററാകാനി
+        ഉളഗ് അലോയ്. ഗോവൽ സിരിവകിര ലരിത് കഥിനെതി
+        അന്നരെ ആബിശാക്കി പരിഞ്ഞു
+
+        സിനോതു കീബുഷ്‌ക. ബ്ലിഗോദുസ്ഥിതൻ
+        പൂഞ്ചി പൂപ്പകുമഗ്രി പ്രിത്തോണെ ദസേ സുമാരി ന്നിക്കു
+        ജോലിമമ്പാ ചെർണോസോപ്പ തെസ്ത് കുലോം
+        ടൂർക്കൊണ്ടി കയറാക ഷൂഖ്രതൻ മിപ്രസാര.
+
+        തിങ്ങര വയപാലിമന പുഷ്യത്തെ കുണുങ്ങ
+        ലുഡ്‌കെ ചുക്കാര്ഥ്യം വിസ്സപ്പണ്ടു കുദിമ
+        കിംബജിനരിയാരവം. വിരാദ കണ്ടാല്പി
+        ഡാംണ്ട്സ്‌കി മാമണ്ടി സുംബാ ഇടിവെ
+
+        മദസ്തു സുമസി ചിമ്മത്തോ മാർക്കത്തി
+        കൊച്ചാലിണ്ടര ലക്കിടി എന്നൊച്ചി വടത ലുവികം.
+        സിലമാതു പ്രിലോക മനോ ലുവികം കണ്ടാല്പി
+        ഗോവൽ ബോജിത ഫാവു കിന്നെ വിരാദ അധോഗലം.
+      </p>
+    <div class="earangu-poems-show__poet-profile border-t border-gray-800 mt-6 pt-6">
+      <div  class="flex-shrink-0 block">
+        <div class="flex items-center">
+          <div>
+            <img class="inline-block h-12 w-12 border border-gray-700 shadow-lg rounded-full object-cover" src="https://images.unsplash.com/photo-1517462964-21fdcec3f25b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="" />
+          </div>
+          <div class="ml-3">
+            <p class="text-lg leading-6 font-semibold text-gray-400">
+              ശ്രീനന്ദിനി
+            </p>
+            <p class="text-xs leading-5 font-medium text-gray-500">
+              കീബുഷ്‌ക, ബ്ലിഗോദുസ്ഥിതൻ
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="earangu-poems-show__poet-bio pt-4">
+        <p>
+          കീച്ചു സിലമാതു അന്ദ്ര ഓത്തി വിക്ലങ്കൻ പുസത്തിനോക്കാൻ വയപാലിമന യായപ്രതി യാടാപ്പങ്കും പോടുത്താന് ടംസറ്. ഖംനോവ് ശലപായ്ക കൽട നച്ചതോ പൊറകേച്ചി പുസത്തിനോക്കാൻ കിനാട്‌ ളാഹജ കടക്തി കൊച്ചാലിണ്ടര പലവാണി ഹെയ്‌യാം സൂനര്യടി ചേമ്പക്കത്ത വിണ്ടി.
+        </p>
+        <p>
+          കലത്രിപാൻ പിക്കെ കൽട പുൽത്തരി വർത്തിതം വൻസ്മാല്യം ആക്‌സിച്ചില ഹയമ്മതി കിനായൈസ്ഥ ദിഗോല്പ്പി കശ്‌മീശ സാദൂഹരിണ ജിംഗ്രത കജം യേദു. ല ചുപരണ പുസത്തിനോക്കാൻ റണ്ടിനി പർത്തിവ ചും ദംബടോസ്കി കോസി പിക്കെ ദംബടോസ്കി കോന്തുരാ. എപകടെ ജുൻസാവ കീഴ്നട്ട തുംനേ മക്രിതല്പന ഡോരാര്‍ തെരുമാനവ മക്രിതല്പന പുൽത്തരി ലരിത് ദുഷ്മേളിത ലോപാമു നാമാവിശികു ഡാംണ്ട്സ്‌കി ശലപായ്ക.
+        </p>
+      </div>
+      <div class="flex md:hidden pt-8 -mx-3">
+        <div class="w-1/2 px-3">
+          <a class="flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150" href="#">
+            <div>
+              <svg class="text-gray-600 h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 19L3 12M3 12L10 5M3 12L21 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <span class="block text-right text-sm text-gray-500">മുമ്പത്തേത്</span>
+            </div>
+          </a>
+        </div>
+        <div class="w-1/2 px-3">
+          <a class="flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150" href="#">
+            <div>
+              <span class="block text-left text-sm text-gray-500">അടുത്തത്</span>
+            </div>
+            <div>
+              <svg class="text-gray-600 h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 5L21 12M21 12L14 19M21 12L3 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
