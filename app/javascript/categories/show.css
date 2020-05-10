@@ -1,3 +1,7 @@
+.earangu-show__poem-card-thumbnail-container {
+  padding-bottom: 56.25%;
+}
+
 .earangu-show__poem-card-thumbnail {
   @apply rounded-lg;
 }
