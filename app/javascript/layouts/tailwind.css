@@ -16,25 +16,25 @@ html {
 
 body {
     font-family: "Open Sans", sans-serif;
-    color: #453c52;
+    color: #12161F;
     @apply w-full h-full antialiased;
 }
 
 @screen md {
     * {
         scrollbar-width: thin;
-        scrollbar-color: theme(colors.gray.500) theme(colors.gray.100);
+        scrollbar-color: theme(colors.gray.800) theme(colors.gray.900);
     }
     ::-webkit-scrollbar {
         width: 12px;
     }
     ::-webkit-scrollbar-track {
-        background: theme(colors.gray.100);
+        background: theme(colors.gray.900);
     }
     ::-webkit-scrollbar-thumb {
-        background-color: theme(colors.gray.500);
+        background-color: theme(colors.gray.800);
         border-radius: 6px;
-        border: 3px solid theme(colors.gray.100);
+        border: 3px solid theme(colors.gray.900);
     }
 }
 
@@ -219,6 +219,10 @@ button:disabled:hover, .disabled:hover, button:disabled:focus, .disabled:focus {
 
 .button-xl {
     @apply py-2 px-6 text-base h-12;
+}
+
+.bg-darker {
+    background-color: #12161F;
 }
 
 /* Footer Style */

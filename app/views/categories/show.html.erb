@@ -1,10 +1,64 @@
-<h1>  <%= @category.name %></h1>
-<h1>  <%= @category.description %></h1>
+<%= stylesheet_pack_tag 'categories/show', media: 'all'%>
+<%= javascript_pack_tag 'categories/show', nonce: true %>
 
+<%# <h1> <%= @category.name %></h1>
+<%# <h1> <%= @category.description %></h1>
 
 <div>
-  <% @category.poems.map do |poem| %>
-    <div>  <%= poem.title %></div>
-    <a class="no-underline btn btn-primary btn-large" href=<%= poem_path(poem) %>>View Poem</a>
-  <% end %>
+  <div class="sm:hidden px-3">
+    <select aria-label="Selected tab" class="mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5 transition ease-in-out duration-150">
+      <option selected>കവിത ഇന്ന്</option>
+      <option>കവിത ഇന്നലെ</option>
+      <option>കവിതാ പഠനം</option>
+      <option>കവിപഠനം</option>
+      <option>കവിതയുടെ വഴികൾ</option>
+      <option>പുസ്തകപരിചയം</option>
+      <option>ബാലകവിതകൾ</option>
+    </select>
+  </div>
+  <div class="hidden sm:block border-b border-gray-900">
+    <div class="max-w-5xl mx-auto px-3 md:px-4">
+      <nav class="-mb-px flex">
+        <a href="#" class="flex-1 whitespace-no-wrap text-center py-4 px-1 border-b-3 border-indigo-500 font-medium text-sm leading-5 text-indigo-600  focus:outline-none focus:text-indigo-800 focus:border-indigo-700 aria-current="page">
+          കവിത ഇന്ന്
+        </a>
+        <a href="#" class="flex-1 whitespace-no-wrap text-center ml-8 py-4 px-1 border-b-3 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">
+          കവിത ഇന്നലെ
+        </a>
+        <a href="#" class="flex-1 whitespace-no-wrap text-center ml-8 py-4 px-1 border-b-3 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">
+          കവിതാ പഠനം
+        </a>
+        <a href="#" class="flex-1 whitespace-no-wrap text-center ml-8 py-4 px-1 border-b-3 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">
+          കവിപഠനം
+        </a>
+        <a href="#" class="flex-1 whitespace-no-wrap text-center ml-8 py-4 px-1 border-b-3 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">
+          കവിതയുടെ വഴികൾ
+        </a>
+        <a href="#" class="flex-1 whitespace-no-wrap text-center ml-8 py-4 px-1 border-b-3 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">
+          പുസ്തകപരിചയം
+        </a>
+        <a href="#" class="flex-1 whitespace-no-wrap text-center ml-8 py-4 px-1 border-b-3 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">
+          ബാലകവിതകൾ
+        </a>
+
+      </nav>
+    </div>
+  </div>
+</div>
+<div class="max-w-5xl mx-auto px-3 md:px-4">
+  <div class="flex -mx-3 md:-mx-4 flex-wrap">
+    <% @category.poems.map do |poem| %>
+      <a href=<%= poem_path(poem) %> class="w-full md:w-1/2 px-3 md:px-4">
+        <span class="mt-8 block">
+          <img class="w-full earangu-show__poem-card-thumbnail" src="https://images.unsplash.com/photo-1549213821-4708d624e1d1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80" alt="Sunset in the mountains">
+          <span class="earangu-show__poem-card-title-bar block shadow-lg rounded-b-lg px-3 md:px-6 pt-3 md:pt-4 pb-5 md:pb-6 mx-3 md:mx-4">
+            <h2 class="font-bold text-lg md:text-2xl text-white leading-snug"><%= poem.title %></h2>
+            <p class="text-white text-sm md:text-base leading-snug mt-1">
+              ഏഴാച്ചേരി രാമചന്ദ്രൻ
+            </p>
+          </span>
+        </span>
+      </a>
+    <% end %>
+  </div>
 </div>
