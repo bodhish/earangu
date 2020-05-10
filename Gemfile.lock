@@ -1192,6 +1192,7 @@ DEPENDENCIES
   graphiql-rails (~> 1.7)
   graphql (~> 1.9)
   jbuilder (~> 2.7)
+  kaminari
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 4.3)

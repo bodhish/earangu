@@ -12,7 +12,7 @@
       </a>
     </nav>
     <nav class="px-3 pt-4 lg:px-10 lg:pt-8 hidden sm:flex items-center text-sm leading-4 font-medium">
-      <a href="#" class="text-gray-400 hover:text-gray-200 transition duration-150 ease-in-out">e-അരങ്ങ്</a>
+      <a href="/" class="text-gray-400 hover:text-gray-200 transition duration-150 ease-in-out">e-അരങ്ങ്</a>
       <svg class="flex-shrink-0 mx-2 h-5 w-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
       </svg>
@@ -32,30 +32,34 @@
       <p class="text-gray-400 text-sm lg:text-base"><%= @poem.poet.name %></p>
       <div class="hidden md:flex pt-8 -mx-3">
         <div class="w-1/2 px-3">
-          <a class="flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150" href="#">
-            <div>
-              <svg class="text-gray-600 h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 19L3 12M3 12L10 5M3 12L21 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <span class="block text-right text-sm text-gray-500">മുമ്പത്തേത്</span>
-              <span class="hidden lg:block text-right text-base font-bold text-gray-300 truncate w-40 xl:w-56">ആഡോയിഴിഞ്ഞു പഴിത്തേടി ആഡോയിഴിഞ്ഞു പഴിത്തേടി ആഡോയിഴിഞ്ഞു പഴിത്തേടി</span>
-            </div>
-          </a>
+          <% if @poem.prev %>
+            <%= link_to poem_path(@poem.prev), class: 'flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150' do %>
+              <div>
+                <svg class="text-gray-600 h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 19L3 12M3 12L10 5M3 12L21 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <span class="block text-right text-sm text-gray-500">മുമ്പത്തേത്</span>
+                <span class="hidden lg:block text-right text-base font-bold text-gray-300 truncate w-40 xl:w-56"><%= @poem.prev.title %></span>
+              </div>
+            <% end %>
+          <% end %>
         </div>
         <div class="w-1/2 px-3">
-          <a class="flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150" href="#">
-            <div>
-              <span class="block text-left text-sm text-gray-500">അടുത്തത്</span>
-              <span class="hidden lg:block text-left text-base font-bold text-gray-300 truncate w-40 xl:w-56">കയറാക ഷൂഖ്രതൻ</span>
-            </div>
-            <div>
-              <svg class="text-gray-600 h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14 5L21 12M21 12L14 19M21 12L3 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-          </a>
+          <% if @poem.next %>
+            <%= link_to poem_path(@poem.next), class: 'flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150' do %>
+              <div>
+                <span class="block text-left text-sm text-gray-500">അടുത്തത്</span>
+                <span class="hidden lg:block text-left text-base font-bold text-gray-300 truncate w-40 xl:w-56"><%= @poem.next.title %></span>
+              </div>
+              <div>
+                <svg class="text-gray-600 h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14 5L21 12M21 12L14 19M21 12L3 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -93,28 +97,33 @@
       </div>
       <div class="flex md:hidden pt-8 -mx-3">
         <div class="w-1/2 px-3">
-          <a class="flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150" href="#">
-            <div>
-              <svg class="text-gray-600 h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 19L3 12M3 12L10 5M3 12L21 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <span class="block text-right text-sm text-gray-500">മുമ്പത്തേത്</span>
-            </div>
-          </a>
+          <% if @poem.prev %>
+            <a class="flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150" href="#">
+              <div>
+                <svg class="text-gray-600 h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 19L3 12M3 12L10 5M3 12L21 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <span class="block text-right text-sm text-gray-500">മുമ്പത്തേത്</span>
+              </div>
+            </a>
+          <% end %>
         </div>
         <div class="w-1/2 px-3">
-          <a class="flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150" href="#">
-            <div>
-              <span class="block text-left text-sm text-gray-500">അടുത്തത്</span>
-            </div>
-            <div>
-              <svg class="text-gray-600 h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14 5L21 12M21 12L14 19M21 12L3 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-          </a>
+          <% if @poem.next %>
+            <a class="flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150" href="#">
+              <div>
+                <span class="block text-left text-sm text-gray-500">അടുത്തത്</span>
+              </div>
+
+              <div>
+                <svg class="text-gray-600 h-5 w-5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14 5L21 12M21 12L14 19M21 12L3 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </a>
+          <% end %>
         </div>
       </div>
     </div>
