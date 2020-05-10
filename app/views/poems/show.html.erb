@@ -1,4 +1,4 @@
-<%= stylesheet_pack_tag 'poems/show', media: 'all'%>
+<%= stylesheet_pack_tag 'poems/show', media: 'all' %>
 <%= javascript_pack_tag 'poems/show', nonce: true %>
 
 
@@ -28,16 +28,16 @@
       <svg class="flex-shrink-0 mx-2 h-5 w-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
       </svg>
-      <a href="#" class="text-gray-400 hover:text-gray-200 transition duration-150 ease-in-out"><%= @poem.title%></a>
+      <a href="#" class="text-gray-400 hover:text-gray-200 transition duration-150 ease-in-out"><%= @poem.title %></a>
     </nav>
     <div class="earangu-poems-show__video-container px-0 pt-4 md:px-4 lg:px-10 lg:rounded-lg overflow-hidden shadow-lg">
       <div class="earangu-poems-show__video-wrapper">
-        <iframe width="560" height="315" src="<%=@poem.youtube_link %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="<%= @poem.youtube_link %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
     <div class="px-3 pt-1 pb-4 lg:px-10">
-      <h1 class="text-white text-xl lg:text-3xl"><%= @poem.title%></h1>
-      <p class="text-gray-400 text-sm lg:text-base"><%= @poem.poet.name%></p>
+      <h1 class="text-white text-xl lg:text-3xl"><%= @poem.title %></h1>
+      <p class="text-gray-400 text-sm lg:text-base"><%= @poem.poet.name %></p>
       <div class="hidden md:flex pt-8 -mx-3">
         <div class="w-1/2 px-3">
           <a class="flex items-center justify-between p-3 border border-gray-800 shadow rounded-lg bg-gray-900 text-white hover:bg-transparent hover:shadow-lg hover:border-primary-800 hover:text-primary-300 transition ease-in-out duration-150" href="#">
@@ -72,27 +72,28 @@
     <span class="inline-flex items-center px-2 py-px rounded text-xs font-semibold tracking-wider leading-5 bg-green-200 text-green-900 border-green-500">
     <%= simple_format(@poem.category.name) %>
     </span>
-    <h2 class="text-white text-2xl"><%= @poem.title%></h2>
+    <h2 class="text-white text-2xl"><%= @poem.title %></h2>
     <%= simple_format(@poem.description) %>
     <div class="earangu-poems-show__poet-profile border-t border-gray-800 mt-6 pt-6">
-      <div  class="flex-shrink-0 block">
+      <div class="flex-shrink-0 block">
         <div class="flex items-center">
           <div>
-            <img class="inline-block h-12 w-12 border border-gray-700 shadow-lg rounded-full object-cover" src="https://images.unsplash.com/photo-1517462964-21fdcec3f25b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="" />
+            <%#= image_tag(@poem.poet.avatar) class: %>
+            <img src=<%= url_for(@poem.poet.avatar) %> alt="" class="inline-block h-12 w-12 border border-gray-700 shadow-lg rounded-full object-cover"/>
           </div>
           <div class="ml-3">
             <p class="text-lg leading-6 font-semibold text-gray-400">
-            <%= @poem.poet.name %>
+              <%= @poem.poet.name %>
             </p>
             <p class="text-xs leading-5 font-medium text-gray-500">
-            <%= @poem.poet.title %>
+              <%= @poem.poet.title %>
             </p>
           </div>
         </div>
       </div>
       <div class="earangu-poems-show__poet-bio pt-4">
         <p>
-        <%= simple_format(@poem.poet.bio) %>
+          <%= simple_format(@poem.poet.bio) %>
         </p>
       </div>
       <div class="flex md:hidden pt-8 -mx-3">

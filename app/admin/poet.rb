@@ -1,5 +1,5 @@
 ActiveAdmin.register Poet do
-  permit_params :name, :title, :bio
+  permit_params :name, :title, :bio, :avatar
 
   index do
     selectable_column
@@ -18,6 +18,7 @@ ActiveAdmin.register Poet do
       f.input :name
       f.input :title
       f.input :bio, as: :trix
+      f.input :avatar, as: :file
     end
     f.actions
   end
